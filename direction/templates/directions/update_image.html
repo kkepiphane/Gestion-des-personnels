@@ -1,0 +1,44 @@
+{% extends 'directions/main.html'%}
+
+
+{% block content %}
+<div class="row mb-2">
+    <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h2 class="h5 pt pb-2 mb-4 border-bottom"><span class="title-h"><i class="bi bi-toggles2"></i> Personnel</span>/ Modification d'une Images</h2>
+            <br>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label"><b>Choisir la personne:</b></label> 
+                                {{ form.personne_profil }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label"><b>Image :</b></label>
+                            {{ form.image }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label"><b>CV : </b></label>
+                            {{ form.pdf }}
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-10">
+                            </div>                         
+                            <div class="col-md-2">
+                                <button class="btn btn-success" type="submit">Modifier</button>                            
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

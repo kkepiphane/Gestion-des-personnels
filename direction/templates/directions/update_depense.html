@@ -1,0 +1,83 @@
+{% extends 'directions/main.html'%}
+
+
+{% block content %}
+<div class="row mb-2">
+    <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h2 class="h5 pt pb-2 mb-4 border-bottom"><span class="title-h"><i class="bi bi-toggles2"></i> Depense</span>/ depense de la semaine</h2>
+            <br>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form.date_debut }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.date_fin }}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                {{ form.laboratoire }}
+                            </div>
+                                <div class="col-md-3">
+                                  {{ form.autre_achat }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.medicament }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.menage }}
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                {{ form.deplacement }}
+                            </div>
+                                <div class="col-md-3">
+                                    {{ form.formation }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.salaire }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.telephone }}
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                {{ form.entretien }}
+                            </div>
+                                <div class="col-md-3">
+                                    {{ form.papeterie }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.telephone }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.ceet }}
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-10">
+                            </div>                         
+                            <div class="col-md-2">
+                                <button class="btn btn-success" type="submit">Modifier et Sortie</button>                            
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

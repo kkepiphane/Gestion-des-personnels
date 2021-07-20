@@ -1,0 +1,249 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Infos-Pura Pagani</title>
+
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="shortcut icon" href="{% static 'images/Pura pagani.jpg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static '/css/main.css'%}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static '/bootstrap-icons/bootstrap-icons.css'%}">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+</head>
+<body>
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <div class="row pb-2 pt-3 border-bottom" style="background-color: rgb(27, 50, 53);">
+                    <div class="col-md-1"><a href="#">Retour</a></div>
+                    <div class="col-md-4">
+                        <h2 class="h5"><span class="title-h"><i class="bi bi-toggles2"></i> Recette et Depense</span>/ Comptes </h2>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <div class="row mr-5">
+                                <form action="{% url 'list_personnel' %}" method="get">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            {{ filters.form.startDays }}
+                                        </div>
+                                        <div class="col-md-5">
+                                            {{ filters.form.endDays }}
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button type="submit" class="btn btn"><i class="bi bi-search" style="color: aliceblue;"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <table class="table table-header">
+                            <thead>
+                                <tr>
+                                    <th>Date_Début_&_fin </th>
+                                    <th>NC</th>
+                                    <th>AC</th>
+                                    <th>Consultation</th>
+                                    <th>Vente_Produit</th>
+                                    <th>Actes_&_Soin</th>
+                                    <th>Analyse</th>
+                                    <th>Achats_Produit</th>
+                                    <th>Autres_Produit</th>
+                                    <th>Lunettes</th>
+                                    <th>INAM</th>
+                                    <th>TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for echoR in listRectte %}
+                                <tr>
+                                    <td>{{ echoR.date_debut | date:"d-"}}{{ echoR.date_fin| date:"d/n/o" }}</td>
+                                    <td>{{ echoR.nc|floatformat:2 }}</td>
+                                    <td>{{ echoR.ac|floatformat:2 }}</td>
+                                    <td>{{ echoR.consulation|floatformat:2 }}</td>
+                                    <td>{{ echoR.vente_pro|floatformat:2 }}</td>
+                                    <td>{{ echoR.actes_soin|floatformat:2 }}</td>
+                                    <td>{{ echoR.analyse|floatformat:2 }}</td>
+                                    <td>{{ echoR.achats_pro|floatformat:2 }}</td>
+                                    <td>{{ echoR.autre_pro|floatformat:2 }}</td>
+                                    <td>{{ echoR.lunette|floatformat:2 }}</td>
+                                    <td>{{ echoR.inam|floatformat:2 }}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td>TOTAL</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3" style="background: rgb(47, 190, 142);">
+                                <div class="card-header">
+                                    <h5 class="card-title">TOTAL DES RECETTES</h5>
+                                </div>
+                                <div class="card-body">
+                                     <h5 class="card-title"></h5>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                     <div class="col-md">
+                         <div class="card text-center text-white mb-3" style="background: rgb(98, 129, 155);">
+                             <div class="card-header">
+                                 <h5 class="card-title">TOTAL DEPENSE</h5>
+                             </div>
+                             <div class="card-body">
+                                  <h5 class="card-title"></h5>
+                              </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col">
+                     <div class="col-md">
+                         <div class="card text-center text-white mb-3" style="background: rgb(27, 56, 59);">
+                             <div class="card-header">
+                                 <h5 class="card-title">RESTE</h5>
+                             </div>
+                             <div class="card-body">
+                                  <h5 class="card-title"></h5>
+                              </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col">
+                    <div class="col-md">
+                        <div class="card text-center text-white mb-3" style="background: rgb(27, 56, 59);">
+                            <div class="card-header">
+                                <h5 class="card-title"></h5>
+                            </div>
+                            <div class="card-body">
+                                 <h5 class="card-title"></h5>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>  
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <div class="row pt-3 pb-2 mb-4 border-bottom" style="background-color: rgb(27, 50, 53);">
+                    <div class="col-md-5">
+                        <h2 class="h5"><span class="title-h"><i class="bi bi-toggles2"></i> Personnel</span>/ Liste des image </h2>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <div class="row mr-5">
+                                <form action="{% url 'list_personnel' %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <input type="search" class="form-control me-2" placeholder="Rechercher..." name="recherche">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="submit" class="btn btn"><i class="bi bi-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date_début_&_fin</th>
+                                    <th>Labo</th>
+                                    <th>Autres_Achats</th>
+                                    <th>Médoc</th>
+                                    <th>Ménages</th>
+                                    <th>Déplacements</th>
+                                    <th>Formation</th>
+                                    <th>Salaire</th>
+                                    <th>Téléphone</th>
+                                    <th>Entretien</th>
+                                    <th>Papéterie</th>
+                                    <th>CNSS</th>
+                                    <th>CEET</th>
+                                    <th>TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for echoDep in listDepense %}
+                                <tr>
+                                    <td>{{ echoDep.date_debut | date:"d-" }}{{ echoDep.date_fin | date:"d/n/o"  }}</td>
+                                    <td>{{ echoDep.laboratoire|floatformat:2 }}</td>
+                                    <td>{{ echoDep.autre_achat|floatformat:2 }}</td>
+                                    <td>{{ echoDep.medicament|floatformat:2 }}</td>
+                                    <td>{{ echoDep.menage|floatformat:2 }}</td>
+                                    <td>{{ echoDep.deplacement|floatformat:2 }}</td>
+                                    <td>{{ echoDep.formation|floatformat:2 }}</td>
+                                    <td>{{ echoDep.salaire|floatformat:2 }}</td>
+                                    <td>{{ echoDep.telephone|floatformat:2 }}</td>
+                                    <td>{{ echoDep.entretien|floatformat:2 }}</td>
+                                    <td>{{ echoDep.papeterie|floatformat:2 }}</td>
+                                    <td>{{ echoDep.cnss|floatformat:2 }}</td>
+                                    <td>{{ echoDep.ceet|floatformat:2 }}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td>TOTAL</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>     
+
+<script src="{% static '/js/JQuery/js/bootstrap.min.js'%}"></script>
+<script src="{% static '/js/JQuery/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static '/js/main.js'%}"></script>
+<script type="text/javascript">
+  $(function () {
+      $('#datetimepicker1').datetimepicker();
+  });
+</script>
+</body>
+</html>

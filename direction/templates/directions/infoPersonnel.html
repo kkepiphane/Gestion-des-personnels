@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Infos-Pura Pagani</title>
+
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="shortcut icon" href="{% static 'images/Pura pagani.jpg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static '/css/main.css'%}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static '/bootstrap-icons/bootstrap-icons.css'%}">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+</head>
+<body>
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-0 d-flex flex-column position-static">
+                  <br>
+                     <div class="row mb-2">
+                       <div class="col-md-12">
+                         <h4 class="text-center" style="margin: 20px;">
+                            {% if infosPersonnel.sexe == 'Masculin' %}
+                            Information du Monsieur
+                            {% else %}
+                            Information de Madame
+                            {% endif %}
+                            : {{ infosPersonnel.nom }} {{ infosPersonnel.prenom }}
+                        </h4>
+                         </div>
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row m-4">
+                                            <div class="col-md-6">
+                                                {% for idD in idDoc %}
+                                                        <img src="{{ idD.imageURL }}" class="img-responsive" alt="" style=" width: 120px; border-radius: 70px;">
+                                            
+                                                {% endfor %}
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="row mt-4">
+                                                    <div class="col-md-12 mb-1">
+                                                       <b class="h5">Nom :</b> <span class="">{{ infosPersonnel.nom }}</span>
+                                                    </div>
+                                                    <div class="col-md-12 mb-1">
+                                                       <b class="h5">Prénom : </b> <span class="">{{ infosPersonnel.prenom }}</span>
+                                                    </div>
+                                                    <div class="col-md-12 mb-1">
+                                                        <b class="h6">
+                                                            {% for echoP in lirePost %}
+                                                            {{ echoP.type_service }}
+                                                            {% endfor %}/</b> 
+                                                            <span class="h">{{ infosPersonnel.personne_post }}</span>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+
+                                            </div>
+                                        </div>
+                                        <div class="row m-4">
+                                            <div class="col-md-6"><b class="h5">Date de Naissance :</b></div>
+                                            <div class="col-md-6">{{ infosPersonnel.date_naissance | date:"d/n/o" }}</div>
+                                        </div>
+                                        <div class="row m-4">
+                                            <div class="col-md-6"><b class="h5">Sexe :</b></div>
+                                            <div class="col-md-6">{{ infosPersonnel.sexe }}</div>
+                                        </div>
+                                        <div class="row m-4">
+                                            <div class="col-md-4"><b class="h5">Email :</b> {{ infosPersonnel.email }}</div>
+                                            <div class="col-md-5"><b class="h5">Adresse :</b> {{ infosPersonnel.adresse }}</div>
+                                            <div class="col-md-3"><b class="h5">Téléphone :</b> {{ infosPersonnel.telephone }}</div>
+                                        </div>
+                                        <div class="row m-4">
+                                            <div class="col-md-4"><b class="h5">Nationalité :</b> {{ infosPersonnel.nationalite }}</div>
+                                            <div class="col-md-5"><b class="h6">Situation matrimoniale :</b> {{ infosPersonnel.situation_matrimonial }}</div>
+                                            <div class="col-md-3"><b class="h5">Nombre d'enfant :
+
+                                            </b> 
+                                                {% if infosPersonnel.nombre_enfant != NULL %}
+                                                {{ infosPersonnel.nombre_enfant }}
+                                                {% else %}
+                                                0
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="row m-4">
+                                            <div class="col-md-4"><b class="h5">Contrat :</b> {{ infosPersonnel.contrat }}</div>
+                                            <div class="col-md-5"><b class="h5">Date début :</b> {{ infosPersonnel.date_debut |  date:"d/n/o" }}</div>
+                                            <div class="col-md-3"><b class="h5">Date Fin :</b> {{ infosPersonnel.date_fin | date:"d/n/o" }}</div>
+                                        </div>
+                                        <div class="row m-4">
+                                            <div class="col-md-6"><b class="h5">Personne à prévenir :</b> {{ infosPersonnel.personne_prevenir }}</div>
+                                            <div class="col-md-6"><b class="h5">Téléphone personne à prévenir :</b> {{ infosPersonnel.telephone_prevenir }}</div>
+                                        </div>
+                                        <div class="row m-4">
+                                            <div class="col-md-6"><b class="h5">Numéro de BANK :</b> {{ infosPersonnel.numero_bank }}</div>
+                                            <div class="col-md-6"><b class="h5">Numéro CNSS :</b> {{ infosPersonnel.numero_cnss }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+
+                                    </div>
+                                </div>
+                                <div class="row m-5">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-2">
+                                        <a href="{% url 'list_personnel' %}" class="btn btn-primary">Retour</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="" onclick="window.print()" class="btn btn-success">Imprimer</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script src="{% static '/js/JQuery/js/bootstrap.min.js'%}"></script>
+<script src="{% static '/js/JQuery/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static '/js/main.js'%}"></script>
+<script type="text/javascript">
+  $(function () {
+      $('#datetimepicker1').datetimepicker();
+  });
+</script>
+</body>
+</html>

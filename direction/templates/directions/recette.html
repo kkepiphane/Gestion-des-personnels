@@ -1,0 +1,83 @@
+{% extends 'directions/main.html'%}
+
+
+{% block content %}
+<div class="row mb-2">
+    <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h2 class="h5 pt pb-2 mb-4 border-bottom"><span class="title-h"><i class="bi bi-toggles2"></i> Recette et Depense</span>/ depense et recette de la semaine</h2>
+            <br>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    {% if submitted %}
+                    <div class="alert alert-success alert-dismissible fade show p-2" role="alert">
+                        Enregistrement du recette de la semaine reussi avec Sucess
+                        <button type="button" class="btn-close pb-1" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6" id='datetimepicker1'>
+                                {{ form.date_debut }}
+                            </div>
+                            <div class="col-md-6" id='datetimepicker1'>
+                                {{ form.date_fin }}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                {{ form.nc}}                           
+                            </div>
+                                <div class="col-md-3">
+                                    {{ form.ac }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.consulation }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.vente_pro }}
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                {{ form.actes_soin }}
+                            </div>
+                                <div class="col-md-3">
+                                    {{ form.analyse }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.achats_pro }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ form.autre_pro }}
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form.lunette }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.inam }}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-10">
+                            </div>                         
+                            <div class="col-md-2">
+                                <button class="btn btn-success" type="submit">Enregistrer</button>                            
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

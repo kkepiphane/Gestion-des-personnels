@@ -1,0 +1,62 @@
+{% extends 'directions/main.html'%}
+
+
+{% block content %}
+<div class="card"></div>
+<div class="row mb-2">
+    <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <div class="row pt pb-2 mb-4 border-bottom">
+                <div class="col-md-5">
+                    <h2 class="h5"><span class="title-h"><i class="bi bi-tag"></i> POST</span>/ Listes des Postes</h2>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                    <div class="row mr-5">
+                            <form action="{% url 'liste_poste' %}" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <input type="search" class="form-control me-2" placeholder="Rechercher..." name="recherche">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="submit" class="btn btn"><i class="bi bi-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Num Service</th>
+                                <th>Nom Post</th>
+                                <th>Type de Service</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for echoPost in list_posts %}
+                            <tr>
+                                <td>{{ echoPost.num_post }}</td>
+                                <td>{{ echoPost.nom_post }}</td>
+                                <td>{{ echoPost.type_service }}</td>
+                                <td>
+                                    <a href="{% url 'update_poste' echoPost.id %}"><i class="bi bi-pencil-square h5" style="color: rgb(8, 48, 226);"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

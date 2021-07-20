@@ -1,0 +1,163 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Accueil-Pura Pagani</title>
+
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="shortcut icon" href="{% static 'images/Pura pagani.jpg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static '/css/main.css'%}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static '/bootstrap-icons/bootstrap-icons.css'%}">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+  </head>
+  <body>
+    
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" style="height: 60px;">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#" style="height: 60px;">CMS <span class="title-h">Pura Pagani</span></a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a href="" ><i class="bi bi-bell h5"></i></a>
+      <a href="{% url 'deconnexion' %}" ><i class="bi bi-power h5 p-3  "></i></a>
+    </li>
+  </ul>
+  
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+      <div class="position-sticky pt-3">
+        <div class="profile-sidebar">
+			<div class="profile-userpic">
+			<!--	<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt=""> -->
+                <img src="{% static 'images/user.png' %}" class="img-responsive" alt="">
+			</div>
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name">{{ request.user }}</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">
+                  <span data-feather="home"><i class="bi bi-house"></i></span>
+                  Accueil
+                </a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-person"></i> Personnel <b class="float-end">&raquo;</b> </a>
+                <ul class="submenu dropdown-menu-dark">
+                    <li><a class="nav-link" href="{% url 'personnel' %}"><i class="bi bi-person-plus"></i> Ajout Personnel </a></li>
+                    <li><a class="nav-link" href="{% url 'list_personnel' %}"><i class="bi bi-person-lines-fill"></i> Liste des Personnels </a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="bi bi-tag"></i> Post <b class="float-end">&raquo;</b> </a>
+              <ul class="submenu dropdown-menu-dark">
+                  <li><a class="nav-link" href="{% url 'postes' %}"><i class="bi bi-tag-fill"></i> Ajout Post </a></li>
+                  <li><a class="nav-link" href="{% url 'liste_poste' %}"><i class="bi bi-tags-fill"></i> Liste des Posts </a></li>
+              </ul>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-back"></i> Service <b class="float-end">&raquo;</b> </a>
+                <ul class="submenu dropdown-menu-dark">
+                    <li><a class="nav-link" href="{% url 'service' %}"><i class="bi bi-plus"></i> Ajout Service </a></li>
+                    <li><a class="nav-link" href="{% url 'list_service' %}"><i class="bi bi-folder2-open
+                      "></i> Liste des Services </a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-toggles2"></i> Recettes&Depense <b class="float-end">&raquo;</b> </a>
+                <ul class="submenu dropdown-menu-dark">
+                    <li><a class="nav-link" href="{% url 'recette' %}"><i class="bi bi-currency-euro"></i> Recette et depense </a></li>
+                    <li><a class="nav-link" href="{% url 'depense' %}"><i class="bi bi-currency-exchange"></i> Depense de semaine </a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-clouds"></i> Etat<b class="float-end">&raquo;</b> </a>
+                <ul class="submenu dropdown-menu-dark">
+                    <li><a class="nav-link" href="{% url 'etat' %}"><i class="bi bi-plus"></i> Du mois </a></li>
+                    <li><a class="nav-link" href="#"><i class="bi bi-plus"></i> Année</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="layers"></span>
+                  <i class="bi bi-hurricane"></i> Programmation
+                </a>
+              </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Propos
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h6"><i class="bi bi-house"></i> Accueil/</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          
+        </div>
+      </div>
+      {% block content %}
+
+      {% endblock content %}
+    </main>
+  </div>
+</div>
+<script src="{% static '/js/JQuery/js/bootstrap.min.js'%}"></script>
+<script src="{% static '/js/JQuery/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static '/js/main.js'%}"></script>
+<script type="text/javascript">
+  $(function () {
+      $('#datetimepicker1').datetimepicker();
+  });
+</script>
+</body>
+</html>

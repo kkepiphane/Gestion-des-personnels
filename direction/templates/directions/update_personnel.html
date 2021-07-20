@@ -1,0 +1,116 @@
+{% extends 'directions/main.html'%}
+
+
+{% block content %}
+<div class="row mb-2">
+    <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h2 class="h5 pt pb-2 mb-4 border-bottom"><span class="title-h"><i class="bi bi-person"></i> Personnel</span>/ Ajout d'une Personnel</h2>
+            <br>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form.nom }}                           
+                             </div>
+                            <div class="col-md-6">
+                                {{ form.prenom }}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form.date_naissance }}  
+                          </div>
+                          <div class="col-md-1">
+                             <b>Sexe :</b>
+                          </div>
+                                <div class="col-md-4">
+                                    {{ form.sexe }}                                  
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                                <div class="col-md-4">
+                                    {{ form.email }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form.telephone }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form.adresse }}
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{ form.nationalite}} 
+                            </div>
+                                <div class="col-md-4">
+                                    {{ form.situation_matrimonial }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form.nombre_enfant}}                        
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <b>Type de contrat :</b>
+                            </div>
+                            <div class="col-md-2">
+                                {{ form.contrat}}
+                            </div>
+                                <div class="col-md-4">
+                                    {{ form.date_debut}} 
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form.date_fin}} 
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form.personne_prevenir}} 
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.telephone_prevenir}}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                                <div class="col-md-4">
+                                    {{ form.numero_bank}}  
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form.numero_cnss}} 
+                                </div>
+                                <div class="col-md-1">
+                                    <b>POST : </b> 
+                                 </div>
+                                <div class="col-md-3">
+                                    {{ form.personne_post}}
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                            </div>                         
+                            <div class="col-md-3">
+                                                         
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-success" type="submit">Modifier et Sortie</button>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

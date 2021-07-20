@@ -1,0 +1,111 @@
+{% extends 'directions/main.html'%}
+
+
+{% block content %}
+<div class="row mb-2">
+    <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h2 class="h5 pt pb-2 mb-4 border-bottom"><span class="title-h"><i class="bi bi-toggles2"></i> Personnel</span>/ Ajout d'une Images</h2>
+            <br>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    {% if submitted %}
+                    <div class="alert alert-success alert-dismissible fade show p-2" role="alert">
+                        Enregistrement de l'image réussi avec Sucess
+                        <button type="button" class="btn-close pb-1" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4">
+                                    <label class="form-label"><b>Choisir la personne:</b></label> 
+                                    {{ form.personne_profil }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label"><b>Image :</b></label>
+                                {{ form.image }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label"><b>CV : </b></label>
+                                {{ form.pdf }}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-10">
+                            </div>                         
+                            <div class="col-md-2">
+                                <button class="btn btn-success" type="submit">Enregistrer</button>                            
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <div class="row pt pb-2 mb-4 border-bottom">
+                <div class="col-md-5">
+                    <h2 class="h5"><span class="title-h"><i class="bi bi-toggles2"></i> Personnel</span>/ Liste des image </h2>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                    <div class="row mr-5">
+                            <form action="{% url 'list_personnel' %}" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <input type="search" class="form-control me-2" placeholder="Rechercher..." name="recherche">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="submit" class="btn btn"><i class="bi bi-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Images</th>
+                            <th>Nom & Prénom</th>
+                            <th>CV</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    {% for ecoImg in listDoc %}
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td> 
+                                <img src="{{ ecoImg.imageURL }}" class="img-responsive" alt="" style=" width: 120px; border-radius: 70px;">
+                            </td>
+                            <td>{{ ecoImg.personne_profil }}</td>
+                            <td><a href="{{ ecoImg.pdf.url }}"><i class="bi bi-eye h3"></i></a></td>
+                            <td>
+                                <a href="{% url 'update_image' ecoImg.id %}"><i class="bi bi-pencil-square h5" style="color: rgb(8, 48, 226);"></i></a>
+                                    <a href="{% url 'delete_image' ecoImg.id %}"><i class="bi bi-trash h5 p-3" style="color: red;"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

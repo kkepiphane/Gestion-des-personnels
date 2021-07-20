@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Login-Pura Pagani</title>
+
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="shortcut icon" href="{% static 'image/Pura pagani.jpg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static '/css/login.css'%}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static '/bootstrap-icons/bootstrap-icons.css'%}">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+</head>
+<body class="text-center">
+    
+    <main class="form-signin">
+        <div class="col-md-12">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" id="sign-card">
+            <div class="col p-4 d-flex flex-column position-static">
+      <form method="POST" action="">
+        <img class="mb-4" src="{% static 'images/Pura pagani.jpg' %}" alt="" width="120" height="90" id="imId">
+        <h1 class="h3 mb-3 fw-normal">CMS Pura Pagani</h1>
+        {% csrf_token %}
+        <div class="input-group mb-3">
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="bi bi-person h4"></i></span>
+          </div>
+          <input type="text" name="username" placeholder="Username..." class="form-control">
+        </div>
+        <div class="input-group mb-2">
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="bi bi-key h5"></i></span>
+          </div>
+            <input type="password" name="password" placeholder="Password..." class="form-control" >
+        </div>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Se Connecter</button>
+      </form>  
+      <div class="mt-4">
+        {% for mess in messages %}
+        <p id="messages">{{ mess }}</p>
+        {% endfor %}
+       <!-- <div class="d-flex justify-content-center links">
+          Vous n'avez pas de compte? <a href="{% url 'register' %}" class="ml-2">S'inscrir</a>
+        </div>-->
+        <p class="mt-5 mb-3 text-muted">&copy; CMS Pura Pagani-2021</p>
+      </div>   
+    </div>
+            </div>
+            </div>
+    </main>
+    
+<script src="{% static '/js/JQuery/js/bootstrap.min.js'%}"></script>
+<script src="{% static '/js/JQuery/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static '/js/main.js'%}"></script>
+</body>
+</html>
